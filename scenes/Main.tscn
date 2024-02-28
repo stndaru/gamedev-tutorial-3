@@ -1,14 +1,112 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Ground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Barrier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/light.png" type="Texture" id=4]
+[ext_resource path="res://assets/maimai.jpg" type="Texture" id=5]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+cull_mode = 1
+polygon = PoolVector2Array( 8, 32, -16, 32, -16, 0, -32, -8, -8, -16, -8, -32, 8, -32, 8, -16, 40, -8, 8, 0, 8, 32 )
 
 [node name="Root" type="Node2D"]
 
-[node name="Ground" parent="." instance=ExtResource( 1 )]
-position = Vector2( 507.708, 363.86 )
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 
-[node name="Ground2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 789.149, 294.054 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 504, 72 )
+scale = Vector2( 0.388021, 0.388021 )
+texture = ExtResource( 5 )
 
-[node name="Ground3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 225.95, 294.562 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 136, 360 )
+
+[node name="Wall" type="Node2D" parent="."]
+
+[node name="StaticBody2D" parent="Wall" instance=ExtResource( 3 )]
+position = Vector2( 544, 408 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Wall/StaticBody2D"]
+light_mask = 3
+occluder = SubResource( 1 )
+light_mask = 3
+
+[node name="StaticBody2D2" parent="Wall" instance=ExtResource( 3 )]
+position = Vector2( 544, 344 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Wall/StaticBody2D2"]
+light_mask = 3
+occluder = SubResource( 1 )
+light_mask = 3
+
+[node name="StaticBody2D3" parent="Wall" instance=ExtResource( 3 )]
+position = Vector2( 544, 152 )
+
+[node name="Light2D" type="Light2D" parent="Wall/StaticBody2D3"]
+texture = ExtResource( 4 )
+texture_scale = 0.5
+color = Color( 0.945098, 0.776471, 0.278431, 1 )
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Wall/StaticBody2D3"]
+light_mask = 3
+occluder = SubResource( 1 )
+light_mask = 3
+
+[node name="StaticBody2D4" parent="Wall" instance=ExtResource( 3 )]
+position = Vector2( 544, 88 )
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="Wall/StaticBody2D4"]
+light_mask = 3
+occluder = SubResource( 1 )
+light_mask = 3
+
+[node name="StaticBody2D5" parent="Wall" instance=ExtResource( 3 )]
+position = Vector2( 544, 24 )
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="Wall/StaticBody2D5"]
+light_mask = 3
+occluder = SubResource( 1 )
+light_mask = 3
+
+[node name="StaticBody2D6" parent="Wall" instance=ExtResource( 3 )]
+position = Vector2( 544, -40 )
+
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="Wall/StaticBody2D6"]
+light_mask = 3
+occluder = SubResource( 1 )
+light_mask = 3
+
+[node name="StaticBody2D7" parent="Wall" instance=ExtResource( 3 )]
+position = Vector2( 544, -104 )
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Ground" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( 532, 479 )
+
+[node name="Ground2" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( 886, 479 )
+
+[node name="Ground5" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( 1032, 264 )
+rotation = 1.5708
+
+[node name="Ground6" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( 1032, -88 )
+rotation = 1.5708
+
+[node name="Ground7" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( -40, 272 )
+rotation = 1.5708
+
+[node name="Ground8" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( -40, -80 )
+rotation = 1.5708
+
+[node name="Ground3" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( 179, 479 )
+
+[node name="Ground4" parent="Ground" instance=ExtResource( 1 )]
+position = Vector2( 536, 265 )
